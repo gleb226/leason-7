@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 #help(requests)
 
@@ -25,3 +27,13 @@ c = soup.find_all('h6')
 
 for c in c:
     print(c.text)
+
+uri = "mongodb+srv://gmedvede226:1234@cluster0.sx5570k.mongodb.net/?retryWrites=true&w=majority"
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')conectet to database
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
