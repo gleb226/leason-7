@@ -20,6 +20,7 @@ try:
     soup = BeautifulSoup (data, 'html.parser')
 
     c = soup.find_all('h6')
+    d = soup.find_all('p')
 
     # a = soup.find_all('a', {"href":"/currencies/bitcoin/markets/"
     # })
@@ -31,6 +32,8 @@ try:
 
     for c in c:
         print(c.text)
+    for d in d:
+        print(d.text)
 except Exception as e:
     print(e)
 
@@ -47,7 +50,10 @@ try:
 
     db = client['Medvediev']
     collection = db['Items']
-    collection.insert_one({'Test':'test'})
+
+    for c in c:
+        print(c.text)
+        collection.insert_one({'Item': c.text})
 
 
 except Exception as e:
