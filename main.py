@@ -1,16 +1,13 @@
-# This is a sample Python script.
+import requests
+from bs4 import BeautifulSoup
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#help(requests)
 
+URL = 'https://github.com/gleb226/leason-7.git'
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+r = requests.get(URL)
 
+data = r.text
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+soup = BeautifulSoup (data, 'html.parser')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
